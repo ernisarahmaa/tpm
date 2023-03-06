@@ -11,3 +11,6 @@ const String tNama1 = "Ernisa Rahma Wahyuni";
 const String tNama2 = "Dinda Aisyah Novitasari";
 const String tNIM1 = "123200003";
 const String tNIM2 = "123200006";
+
+//Button
+const String tCalculate = "Calculate";

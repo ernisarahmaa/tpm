@@ -7,62 +7,102 @@ class LandingPage extends StatelessWidget {
   static const routeName = "/LandingPage";
   @override
   Widget build(BuildContext context) {
-    Widget _judul() {
-      return Container(
-        padding: const EdgeInsets.fromLTRB(10, 40, 10, 20),
-        child: Text(
-          'Data Anggota',
-          style: TextStyle(
-              color: tPrimaryColor,
-              fontWeight: FontWeight.w700,
-              fontSize: 24),
-        ),
-      );
-    }
-
-    Widget dataKelompok() {
-      return ListView(
-        padding: const EdgeInsets.all(8),
-        children: [
-          _judul(),
-          ListTile(
-              title: Text(
-                tNama1,
-                style: TextStyle(fontSize: 19),
-              ),
-              subtitle: Text(
-                tNIM1,
-                style:
-                TextStyle(color: tPrimaryColor, fontSize: 16),
-              )),
-          ListTile(
-              title: Text(
-                tNama2,
-                style: TextStyle(fontSize: 19),
-              ),
-              subtitle: Text(
-                tNIM2,
-                style:
-                TextStyle(color: tPrimaryColor, fontSize: 16),
-              )),
-        ],
-      );
-    }
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text('TPM Assignment App'),
-      ),
-      body: dataKelompok(),
-
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return calculator();
-          }));
-        },
-        tooltip: 'Calculator',
-        child: const Icon(Icons.calculate_rounded),
+      body: Column(
+          children: [
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Stack(
+                children: [
+                  Stack(children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height/1.6,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                    ),
+                    Container(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height/1.6,
+                        decoration: BoxDecoration(
+                          color: tPrimaryColor,
+                          borderRadius: BorderRadius.only(bottomRight: Radius.circular(70), bottomLeft: Radius.circular(70)),
+                        ),
+                        child: Center(
+                          child: Image.asset(
+                            "assets/hand.png",
+                            scale: 2.3,
+                          ),
+                        )
+                    )],
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height/2.666,
+                      padding: EdgeInsets.only(top: 50),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                      ),
+                      child: Column(children: [
+                        Text(
+                          "Get To Know Us!",
+                          style: TextStyle(
+                            fontSize: 30,
+                            color: tPrimaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 15),
+                          child:
+                          Text(
+                              tNama1 + " " + "-" + " " + tNIM1,
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: tPrimaryColor,
+                              )
+                          ),
+                        ),
+                        Text(
+                            tNama2 + " " + "-" + " " + tNIM2,
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: tPrimaryColor,
+                            )
+                        ),
+                      ],),
+                    )
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(90, 680, 20, 0),
+                    child: ElevatedButton(
+                      child: Text(tCalculate),
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return calculator();
+                        }));
+                      },
+                      style: ElevatedButton.styleFrom(
+                          primary: tPrimaryColor,
+                          padding: EdgeInsets.symmetric(horizontal: 60, vertical: 10),
+                          textStyle: TextStyle(
+                            fontSize: 23,
+                            fontWeight: FontWeight.bold
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15)
+                          ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ]
       ),
     );
   }
@@ -108,8 +148,9 @@ class calculatorState extends State<calculator> {
     return Scaffold(
       appBar: new AppBar(
         title: new Text("Calculator"),
-      ), //AppBar
-      backgroundColor: Colors.white38,
+        backgroundColor: tPrimaryColor,
+      ),
+      backgroundColor: Colors.white,
       body: Column(
         children: <Widget>[
           Expanded(
@@ -122,7 +163,7 @@ class calculatorState extends State<calculator> {
                       alignment: Alignment.centerRight,
                       child: Text(
                         userInput,
-                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        style: TextStyle(fontSize: 30, color: Colors.black),
                       ),
                     ),
                     Container(
@@ -132,7 +173,7 @@ class calculatorState extends State<calculator> {
                         answer,
                         style: TextStyle(
                             fontSize: 30,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
                     )
@@ -157,17 +198,16 @@ class calculatorState extends State<calculator> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
+                        color: Colors.orangeAccent,
+                        textColor: Colors.white,
                       );
                     }
-
                     // +/- button
                     else if (index == 1) {
                       return MyButton(
                         buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
+                        color: Colors.orangeAccent,
+                        textColor: Colors.white,
                       );
                     }
                     // % Button
@@ -179,8 +219,8 @@ class calculatorState extends State<calculator> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
+                        color: Colors.orangeAccent,
+                        textColor: Colors.white,
                       );
                     }
                     // Delete Button
@@ -193,8 +233,8 @@ class calculatorState extends State<calculator> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: Colors.blue[50],
-                        textColor: Colors.black,
+                        color: Colors.orangeAccent,
+                        textColor: Colors.white,
                       );
                     }
                     // Equal_to Button
@@ -206,7 +246,7 @@ class calculatorState extends State<calculator> {
                           });
                         },
                         buttonText: buttons[index],
-                        color: Colors.orange[700],
+                        color: Colors.deepOrangeAccent,
                         textColor: Colors.white,
                       );
                     }
@@ -221,11 +261,11 @@ class calculatorState extends State<calculator> {
                         },
                         buttonText: buttons[index],
                         color: isOperator(buttons[index])
-                            ? Colors.blueAccent
-                            : Colors.white,
+                            ? Colors.orangeAccent
+                            : tPrimaryColor,
                         textColor: isOperator(buttons[index])
                             ? Colors.white
-                            : Colors.black,
+                            : Colors.white,
                       );
                     }
                   }), // GridView.builder
@@ -293,4 +333,3 @@ class MyButton extends StatelessWidget {
     );
   }
 }
-
