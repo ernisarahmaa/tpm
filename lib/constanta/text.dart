@@ -4,7 +4,7 @@ const String tLogin = "Login";
 const String tUsername = "Username";
 const String tPassword = "Password";
 const String tLoginTitle = "Welcome Back,";
-const String tLoginSubTitle = "TPM First Assignment";
+const String tLoginSubTitle = "You've been missed";
 
 // Landing Page Text
 const String tNama1 = "Ernisa Rahma Wahyuni";

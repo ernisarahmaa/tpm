@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:tugas1_tpm/constanta/Images.dart';
+import 'package:tugas1_tpm/constanta/colors.dart';
 import 'package:tugas1_tpm/constanta/sizes.dart';
 import 'package:tugas1_tpm/constanta/text.dart';
 import 'landingPage.dart';
@@ -28,11 +29,23 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             padding: const EdgeInsets.all(tDefaultSize),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: 80),
                 Image(image: AssetImage(tWelcomeScreenImage), height: size.height * 0.2),
-                Text(tLoginTitle, style: Theme.of(context).textTheme.headline3),
-                Text(tLoginSubTitle, style: Theme.of(context).textTheme.bodyText1),
+                Text(
+                  tLoginTitle,
+                  style: TextStyle(
+                    fontSize: 40,
+                    color: tPrimaryColor,
+                  ),
+                ),
+                Text(
+                  tLoginSubTitle,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black54
+                  ),
+                ),
 
                 Form(
                   child: Container(
@@ -48,7 +61,9 @@ class _LoginPageState extends State<LoginPage> {
                               prefixIcon: Icon(Icons.person_outline_outlined),
                               labelText: tUsername,
                               hintText: tUsername,
-                              border: OutlineInputBorder()
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(18),
+                              )
                           ),
                         ),
                         const SizedBox(height: tFormHeight),
@@ -61,7 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                             prefixIcon: Icon(Icons.fingerprint),
                             labelText: tPassword,
                             hintText: tPassword,
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
                             suffixIcon: InkWell(
                               onTap: () {
                                 setState(() {
@@ -78,6 +95,17 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              primary: tPrimaryColor,
+                              minimumSize: const Size(330, 50),
+                              textStyle: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(18)
+                              ),
+                            ),
                             onPressed: () {
                               String text = "";
                               if (username == "iniuser" && password == "inipass") {
