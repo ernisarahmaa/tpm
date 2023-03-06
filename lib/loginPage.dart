@@ -17,6 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   String username = "";
   String password = "";
   bool isLoginSuccess = true;
+  bool passToggle = true;
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +56,21 @@ class _LoginPageState extends State<LoginPage> {
                                   onChanged: (value) {
                                     password = value;
                                   },
+                                  obscureText: passToggle,
                                   decoration: InputDecoration(
                                       prefixIcon: Icon(Icons.fingerprint),
                                       labelText: tPassword,
                                       hintText: tPassword,
                                       border: OutlineInputBorder(),
-                                    suffixIcon: IconButton(
-                                        onPressed: null,
-                                        icon: Icon(Icons.remove_red_eye_sharp),
+                                    suffixIcon: InkWell(
+                                        onTap: () {
+                                          setState(() {
+                                            passToggle = !passToggle;
+                                          });
+                                        },
+                                      child: Icon(
+                                        passToggle ? Icons.visibility : Icons.visibility_off
+                                      ),
                                     ),
                                   ),
                                 ),
