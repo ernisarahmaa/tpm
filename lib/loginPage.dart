@@ -110,7 +110,7 @@ class _LoginPageState extends State<LoginPage> {
                               String text = "";
                               if (username == "iniuser" && password == "inipass") {
                                 setState(() {
-                                  text = "Login Sukses";
+                                  text = "Login Success";
                                   isLoginSuccess = true;
                                 });
                                 Navigator.pushReplacement(context,
@@ -119,10 +119,12 @@ class _LoginPageState extends State<LoginPage> {
                                     }));
                               } else {
                                 setState(() {
-                                  text = "Login Gagal, Input Username/Password Salah!";
+                                  text = "Login Failed";
                                   isLoginSuccess = false;
                                 });
                               }
+                              SnackBar snackBar = SnackBar(content: Text(text));
+                              ScaffoldMessenger.of(context).showSnackBar(snackBar);
                             },
                             child: Text(tLogin.toUpperCase()),
                           ),
